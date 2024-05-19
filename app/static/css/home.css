@@ -1,0 +1,61 @@
+/* frontend/static/css/home.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 120px; /* Ajustar conforme a altura total do header e nav */
+    background-image: url('../assets/background_clinica.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o header fique acima dos outros elementos */
+    height: 70px; /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 0.5em 0;
+    text-align: center;
+    position: fixed;
+    top: 70px; /* Alinhe o nav logo abaixo do header */
+    width: 100%;
+    z-index: 999; /* Garante que o nav fique abaixo do header */
+    height: 50px; /* Ajuste conforme necessário */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove a margem padrão do ul */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 2em;
+    text-align: center;
+    color: #fff;
+}
