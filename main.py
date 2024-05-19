@@ -4,10 +4,11 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__, template_folder='./frontend/templates', static_folder='./frontend/static')
 app.config['SECRET_KEY'] = 'sua_chave_secreta_aqui'  # Defina uma chave secreta para proteger suas sessões
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://@DESKTOP-GHNLUF7\\SQLEXPRESS/clinica?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
@@ -19,9 +20,8 @@ class User(db.Model):
     password = db.Column(db.String(128), nullable=False) 
     role = db.Column(db.String(50), nullable=False)
 
-
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+        return f"User('{self.nome}', '{self.email}')"
 
 # Formulário de Registro
 class RegistrationForm(FlaskForm):
@@ -48,7 +48,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(nome=form.nome.data, email=form.email.data, password=hashed_password)
+        user = User(nome=form.nome.data, email=form.email.data, password=hashed_password, role='user')
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
@@ -64,9 +64,12 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             flash('Login successful!', 'success')
             return redirect(url_for('home'))
-        else:
+        else: 
             flash('Login unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 if __name__ == '__main__':
+    with app.app_context():
+        if not os.path.exists('site.db'):
+            db.create_all()
     app.run(debug=True)
