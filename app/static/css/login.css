@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f7f7f7;
+    background: #e0e0e0; /* Fundo mais cinza */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +41,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -54,31 +55,36 @@ input[type="submit"] {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background: #007BFF;
-    color: #fff;
+    background: #ffdd57; /* Cor principal */
+    color: #333;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 input[type="submit"]:hover {
-    background: #0056b3;
+    background: #e6c200; /* Sombra da cor principal */
+    color: #fff;
 }
 
 a {
-    color: #007BFF;
+    color: #ffdd57; /* Cor principal */
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
+    color: #e6c200; /* Sombra da cor principal */
     text-decoration: underline;
 }
 
 span[style="color: red;"] {
     display: block;
     margin-top: 5px;
+    color: #ff0000; /* Cor vermelha para mensagens de erro */
 }
 
 div {
     margin-bottom: 20px;
-    color: green;
+    color: #28a745; /* Cor verde para mensagens de sucesso */
 }

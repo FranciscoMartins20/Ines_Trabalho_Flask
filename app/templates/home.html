@@ -8,22 +8,33 @@
 </head>
 <body>
     <header>
-        <h1>ISEP-X</h1>
-        <nav>
-            <ul>
-                {% if user %}
-                <p>Hello, {{ user['nome'] }}!</p>
+        <div class="container">
+            <h1>ISEP-X</h1>
+            <nav>
+                <ul>
+                    {% if user %}
+                    <li><span>Olá, {{ user['nome'] }}!</span></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% else %}
+                    {% else %}
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="{{ url_for('login') }}">Login</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-    
+        <section class="hero">
+            <video autoplay muted loop id="heroVideo">
+                <source src="{{ url_for('static', filename='assets/4352120-hd_1920_1080_25fps.mp4') }}" type="video/mp4">
+            </video>
+            <div class="hero-content">
+                <h2>Bem vindos à plataforma ISEP-X</h2>
+                <p>Tecnologia que faz a diferença!</p>
+               
+            </div>
+        </section>
     </main>
 </body>
 </html>

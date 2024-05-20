@@ -32,7 +32,8 @@
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
     </form>
-    <p>Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></p>
+  
 </body>
 </html>
